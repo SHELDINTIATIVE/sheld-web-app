@@ -10,8 +10,8 @@
 ### To Implement
 - [x] multiple settings files
 - [x] python decouple
-- [] blog models
-- [] event models
+- [x] blog models
+- [x] event models
 - [] static directory
 - [] blog views
 - [] event views
