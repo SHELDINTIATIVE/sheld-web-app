@@ -12,6 +12,6 @@
 - [x] python decouple
 - [x] blog models
 - [x] event models
-- [] static directory
-- [] blog views
-- [] event views
+- [ ] static directory
+- [ ] blog views
+- [ ] event views
