@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'blog',
     'events',
+    'hitcount'
 
 ]
 
