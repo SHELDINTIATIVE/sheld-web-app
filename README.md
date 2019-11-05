@@ -13,5 +13,9 @@
 - [x] blog models
 - [x] event models
 - [ ] static directory
+- [ ] media files directory
 - [ ] blog views
-- [ ] event views
+- [x] event views
+- [ ] base URLs
+- [ ] event URLs
+- [ ] blog URLs
