@@ -1,31 +1,34 @@
 from django.db import models
 from django.template.defaultfilters import slugify
 
-class Tag(models.Model):
+
+class Category(models.Model):
 	name = models.CharField(max_length=128)
 
 	def __str__(self):
 		return self.name
 
 	class Meta:
-		order = ['-name']
-
-
+		verbose_name = 'Category'
+		verbose_name_plural = 'Categories'
+		order = ['name']
 
 		
 class Post(models.Model):
 	title = models.CharField(max_length=256)
+	category = models.ManyToManyField(Category)
 	author = models.CharField(max_length=256)
 	slug = models.SlugField(unique=True,max_length=256)
 	date = models.DateTimeField()
-	image = models.ImageField() 
+	image = models.ImageField()
 	content = models.TextField()
 	likes = models.IntegerField(default=0)
+	page_views = models.IntegerField(default=0)
 
 	def save(self, *args, **kwargs):
 		# generate URL slug whenever saved 
 		if not self.slug:
-			self.slug = sligify(self.title)
+			self.slug = slugify(self.title)
 			super(Post, self).save(*args, **kwargs)
 
 	def __str__(self):
