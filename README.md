@@ -12,10 +12,11 @@
 - [x] python decouple
 - [x] blog models
 - [x] event models
-- [ ] static directory
+- [x] static directory
 - [ ] media files directory
-- [ ] blog views
+- [x] blog views
 - [x] event views
 - [ ] base URLs
 - [ ] event URLs
 - [ ] blog URLs
+- [ ] templates directory

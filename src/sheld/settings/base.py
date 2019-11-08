@@ -25,7 +25,8 @@ INSTALLED_APPS = [
 
     'blog',
     'events',
-    'hitcount'
+    'hitcount',
+    'crispy_forms'
 
 ]
 
