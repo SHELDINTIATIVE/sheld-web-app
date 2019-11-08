@@ -11,16 +11,17 @@ class Category(models.Model):
 	class Meta:
 		verbose_name = 'Category'
 		verbose_name_plural = 'Categories'
-		order = ['name']
+		ordering = ['name']
 
 		
 class Post(models.Model):
 	title = models.CharField(max_length=256)
 	category = models.ManyToManyField(Category)
 	author = models.CharField(max_length=256)
-	slug = models.SlugField(unique=True,max_length=256)
-	date = models.DateTimeField()
-	image = models.ImageField()
+	email = models.EmailField()
+	slug = models.SlugField(unique=True, max_length=256, blank=True)
+	date = models.DateTimeField(blank=True)
+	image = models.ImageField(blank=True)
 	content = models.TextField()
 	likes = models.IntegerField(default=0)
 	page_views = models.IntegerField(default=0)
@@ -32,10 +33,10 @@ class Post(models.Model):
 			super(Post, self).save(*args, **kwargs)
 
 	def __str__(self):
-		title = self.name
-		if title.len() > 40:
+		title = self.title
+		if len(title) > 40:
 			title = title[:40] + '...'
-		return title + ' by ' + self.author 
+		return title 
 
 	class Meta:
 		ordering = ['-date']
@@ -43,17 +44,17 @@ class Post(models.Model):
 			return self.title
 
 
-class Comment():
+class Comment(models.Model):
 	name = models.CharField(max_length=50)
 	content = models.TextField()
-	created_on = models.DateTimeField(auto_now_add=True)
+	posted_on = models.DateTimeField(auto_now_add=True)
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
 	def __str__(self):
 		content = self.content
-		if content.len() > 40:
+		if len(content) > 40:
 			content = content[:40] + '...'
-		return content + ' by ' + self.name
+		return content
 
 	class Meta:
-		ordering = ['-date']
+		ordering = ['-posted_on']
